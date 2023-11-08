@@ -5,4 +5,6 @@ require("core.plugin_config.treesitter")
 require("core.plugin_config.telescope")
 require("core.plugin_config.lsp_config")
 require("core.plugin_config.toggleterm")
+require("core.plugin_config.gen")
+require("core.plugin_config.fugitive")
 
