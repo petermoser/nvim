@@ -21,3 +21,6 @@ end, {expr = true, noremap = true, silent = true})
 -- For normal mode, it's straightforward since we don't need to exit insert mode
 vim.keymap.set('n', 'fd', ':write<CR>', {noremap = true, silent = true})
 
+-- This maps the Escape key to switch to Normal mode when you're in a terminal buffer.
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
+

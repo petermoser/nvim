@@ -19,9 +19,9 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-treesitter/nvim-treesitter'  
 
-  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  use ({"akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()
-  end}
+  end})
 
   use({
 	  'nvim-telescope/telescope.nvim',
