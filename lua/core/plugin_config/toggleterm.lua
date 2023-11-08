@@ -21,4 +21,4 @@ require('toggleterm').setup({
 })
 
 -- to open another terminial window use space t
-vim.keymap.set('n', '<leader>t', "<cmd>1ToggleTerm<CR>", {noremap = true, silent = true})
+vim.keymap.set('n', '<leader>t', "<cmd>2ToggleTerm<CR>", {noremap = true, silent = true})
