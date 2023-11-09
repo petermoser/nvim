@@ -8,6 +8,7 @@ require("core.plugin_config.toggleterm")
 require("core.plugin_config.gen")
 require("core.plugin_config.fugitive")
 require("core.plugin_config.startify")
+require("core.plugin_config.conform")
 
 
 -- auto open the following plugins
