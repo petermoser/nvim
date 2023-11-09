@@ -15,12 +15,10 @@ require("core.plugin_config.startify")
 -- Open on startup
 vim.api.nvim_create_autocmd("VimEnter", {
   pattern = "*",
-  command = "Startify",
-})
-
--- Autocommand that runs the NvimTreeFindFile command after Neovim has finished loading
-vim.api.nvim_create_autocmd("VimEnter", {
-    pattern = "*",
-    command = "NvimTreeFindFile",
+  callback = function()
+    vim.cmd("NvimTreeOpen")
+    vim.cmd("wincmd p")
+  end,
+  once = true
 })
 

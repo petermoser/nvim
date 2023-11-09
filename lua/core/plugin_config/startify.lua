@@ -16,13 +16,11 @@ vim.g.startify_lists = {
 -- Define startify commands
 vim.g.startify_commands = {
   { up = { 'Update Plugins', ':PackerSync' } },
-  { ug = { 'Upgrade Plugin Manager', ':PackerUpdate' } },
 }
 
 -- Define startify bookmarks
 vim.g.startify_bookmarks = {
   { c = '~/.config/nvim/init.lua' },
-  { g = '~/.gitconfig' },
   { z = '~/.zshrc' },
 }
 
