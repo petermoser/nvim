@@ -26,6 +26,16 @@ return require("packer").startup(function(use)
 	use("tpope/vim-fugitive")
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
 	use({ "mhinz/vim-startify" })
+	-- autocompletion
+	use("hrsh7th/nvim-cmp") -- The main completion plugin
+	-- Sources for nvim-cmp
+	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
+	use("hrsh7th/cmp-buffer") -- Buffer completions
+	use("hrsh7th/cmp-path") -- Path completions
+	use("hrsh7th/cmp-cmdline") -- Cmdline completions
+	-- Snippet Engine and Snippet Source
+	use("L3MON4D3/LuaSnip") -- Snippet Engine
+	use("saadparwaiz1/cmp_luasnip") -- Snippet source for nvim-cmp
 
 	-- conform.vim for installing formatters
 	use({ "stevearc/conform.nvim" })
