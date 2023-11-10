@@ -13,8 +13,6 @@ vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
 -- For insert mode, we create an anonymous function to save and exit insert mode
 vim.keymap.set("i", "fd", function()
 	vim.cmd("write")
-	-- Return the '<Esc>' key to exit insert mode. We use termcodes to ensure it's treated as a key press.
-	return vim.api.nvim_replace_termcodes("<Esc>", true, true, true)
 end, { expr = true, noremap = true, silent = true })
 
 -- For normal mode, it's straightforward since we don't need to exit insert mode
@@ -22,3 +20,6 @@ vim.keymap.set("n", "fd", ":write<CR>", { noremap = true, silent = true })
 
 -- This maps the Escape key to switch to Normal mode when you're in a terminal buffer.
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+
+-- undo is u, redo is Ctrl-u
+vim.keymap.set("n", "<C-u>", ":redo<CR>", { noremap = true, silent = true })
