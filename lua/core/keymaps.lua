@@ -22,6 +22,5 @@ vim.keymap.set("n", "fd", ":write<CR>", { noremap = true, silent = true })
 
 -- This maps the Escape key to switch to Normal mode when you're in a terminal buffer.
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
-
--- undo is u, redo is Ctrl-u
-vim.keymap.set("n", "<C-u>", ":redo<CR>", { noremap = true, silent = true })
+-- two consecutive spacebar presses result in one space
+vim.keymap.set("n", "<Space><Space>", ':exe "normal i "<CR>', { noremap = true, silent = true })
