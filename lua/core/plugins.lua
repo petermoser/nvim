@@ -37,6 +37,8 @@ return require("packer").startup(function(use)
 	use("L3MON4D3/LuaSnip") -- Snippet Engine
 	use("saadparwaiz1/cmp_luasnip") -- Snippet source for nvim-cmp
 
+	use("github/copilot.vim")
+
 	-- conform.vim for installing formatters
 	use({ "stevearc/conform.nvim" })
 
