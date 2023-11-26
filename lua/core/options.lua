@@ -14,6 +14,9 @@ vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
+-- start scrolling when we're 7 lines away from margins
+vim.opt.scrolloff = 7
+
 vim.opt.undofile = true
 vim.opt.undodir = "~/.config/nvim/undodir"
 
