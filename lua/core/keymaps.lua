@@ -26,4 +26,4 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 vim.keymap.set("n", "<Space><Space>", ':exe "normal i "<CR>', { noremap = true, silent = true })
 
 -- don't copy the replaced text after pasting in visual mode
-vim.keymap.set("n", "p", 'p:let @"=@0<CR>', { noremap = true, silent = true })
+vim.keymap.set("v", "p", "pgvy", { noremap = true })
