@@ -20,5 +20,9 @@ vim.opt.scrolloff = 7
 vim.opt.undofile = true
 vim.opt.undodir = "~/.config/nvim/undodir"
 
+-- search, case insensitive by default except when using capital letters
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 --Line numbers
 vim.wo.number = true
