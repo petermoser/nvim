@@ -12,6 +12,7 @@ require("core.plugin_config.fugitive")
 require("core.plugin_config.startify")
 require("core.plugin_config.conform")
 require("core.plugin_config.cmp")
+require("core.plugin_config.copilot")
 
 -- auto open the following plugins
 
