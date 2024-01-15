@@ -27,3 +27,9 @@ vim.keymap.set("n", "<Space><Space>", ':exe "normal i "<CR>', { noremap = true, 
 
 -- don't copy the replaced text after pasting in visual mode
 vim.keymap.set("v", "p", "pgvy", { noremap = true })
+
+-- Map uppercase 'J' to a no-operation command
+vim.keymap.set("n", "J", "<Nop>", { noremap = true })
+
+-- Remap Shift + J to the original line concatenation action
+vim.keymap.set("n", "<S-j>", "J", { noremap = true })
