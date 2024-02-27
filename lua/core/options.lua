@@ -26,3 +26,6 @@ vim.opt.smartcase = true
 
 --Line numbers
 vim.wo.number = true
+
+-- split windows to the right and below
+vim.o.splitright = true
