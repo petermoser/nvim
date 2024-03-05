@@ -41,6 +41,7 @@ return require("packer").startup(function(use)
 
 	-- conform.vim for installing formatters
 	use({ "stevearc/conform.nvim" })
+	use({ "rcarriga/nvim-notify" })
 
 	use({
 		"numToStr/Comment.nvim",
