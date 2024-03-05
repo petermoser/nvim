@@ -34,8 +34,16 @@ vim.keymap.set("n", "J", "<Nop>", { noremap = true })
 -- Remap Shift + J to the original line concatenation action
 vim.keymap.set("n", "<S-j>", "J", { noremap = true })
 
--- shortcut for Gwrite and G commit
-vim.keymap.set("n", "Gc", ":Gwrite<CR>:G commit<CR>", { noremap = true, silent = true })
+-- shortcut for Gwrite and G commit in fugitive:Gwrite
+-- :G commit
+--
+vim.keymap.set("i", "gcom", function()
+	-- Exit insert mode first
+	vim.cmd("stopinsert")
+	-- Then write and quit
+	vim.cmd("Gwrite")
+	vim.cmd("G commit")
+end, { noremap = true, silent = true })
 
 -- shortcut for write and quit
 vim.keymap.set("i", "wq", function()
