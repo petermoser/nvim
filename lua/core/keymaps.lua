@@ -36,3 +36,11 @@ vim.keymap.set("n", "<S-j>", "J", { noremap = true })
 
 -- shortcut for Gwrite and G commit
 vim.keymap.set("n", "Gc", ":Gwrite<CR>:G commit<CR>", { noremap = true, silent = true })
+
+-- shortcut for write and quit
+vim.keymap.set("i", "wq", function()
+	-- Exit insert mode first
+	vim.cmd("stopinsert")
+	-- Then write and quit
+	vim.cmd("wq")
+end, { noremap = true, silent = true })
