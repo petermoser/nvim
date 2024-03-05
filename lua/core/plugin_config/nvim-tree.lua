@@ -7,6 +7,11 @@ require("nvim-tree").setup({
 	-- 	-- when opening a file with C-v, the file will be opened on the right
 	-- 	side = "right",
 	-- },
+	git = {
+		enable = true,
+		ignore = false,
+		timeout = 500,
+	},
 })
 
 vim.keymap.set("n", "<c-n>", ":NvimTreeToggle<CR>")
