@@ -58,7 +58,6 @@ vim.keymap.set("i", "wq", function()
 	vim.cmd("stopinsert")
 	-- Then write and quit
 	vim.cmd("wq")
-	vim.cmd("G push")
 end, { noremap = true, silent = true })
 
 vim.keymap.set("i", "gaa", function()
