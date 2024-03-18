@@ -49,15 +49,16 @@ vim.keymap.set("n", "gco", function()
 	-- Then write and quit
 	vim.cmd("Gwrite")
 	vim.cmd("G commit")
-	vim.cmd("G push")
 end, { noremap = true, silent = true })
 
 -- shortcut for write, quit and git push
 vim.keymap.set("i", "wq", function()
 	-- Exit insert mode first
 	vim.cmd("stopinsert")
-	-- Then write and quit
+	-- Then write
 	vim.cmd("wq")
+	-- Then push
+	vim.cmd("G push")
 end, { noremap = true, silent = true })
 
 vim.keymap.set("i", "gaa", function()
