@@ -51,6 +51,11 @@ vim.keymap.set("n", "gco", function()
 	vim.cmd("G commit")
 end, { noremap = true, silent = true })
 
+-- Remove existing mapping for redo
+vim.keymap.set("n", "<C-r>", "<Nop>", { noremap = true, silent = true })
+-- Map Shift+U to redo
+vim.keymap.set("n", "U", ":redo<CR>", { noremap = true, silent = true })
+
 -- shortcut for write, quit and git push
 vim.keymap.set("i", "wq", function()
 	-- Exit insert mode first

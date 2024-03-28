@@ -20,5 +20,40 @@ require("toggleterm").setup({
 	},
 })
 
+local function run_last_command_in_terminal()
+	-- Get the list of all open buffers
+	local bufs = vim.api.nvim_list_bufs()
+	local toggleterm_buf = nil
+
+	-- Find the first toggleterm buffer
+	for _, buf in ipairs(bufs) do
+		-- Check if it's a toggleterm buffer by checking the buffer name
+		local name = vim.api.nvim_buf_get_name(buf)
+		if name:find("#toggleterm#") then
+			toggleterm_buf = buf
+			break
+		end
+	end
+
+	if toggleterm_buf then
+		-- Focus the toggleterm window containing the buffer
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			if vim.api.nvim_win_get_buf(win) == toggleterm_buf then
+				vim.api.nvim_set_current_win(win)
+				break
+			end
+		end
+
+		-- Send the keystrokes to execute the last command
+		vim.api.nvim_input("i") -- Ensure we're in insert mode
+		vim.api.nvim_input("<Up>") -- Navigate to the last command
+		vim.api.nvim_input("<CR>") -- Execute it
+	else
+		print("ToggleTerm is not open.")
+	end
+end
+
 -- to open another terminial window use space t
 vim.keymap.set("n", "<leader>t", "<cmd>2ToggleTerm<CR>", { noremap = true, silent = true })
+
+vim.keymap.set("n", "<C-r>", "", { callback = run_last_command_in_terminal, noremap = true })
