@@ -33,45 +33,12 @@ vim.keymap.set("n", "J", "<Nop>", { noremap = true })
 -- Remap Shift + J to the original line concatenation action
 vim.keymap.set("n", "<S-j>", "J", { noremap = true })
 
--- shortcut for Gwrite and G commit in fugitive:Gwrite
-vim.keymap.set("i", "gco", function()
-	-- Exit insert mode first
-	vim.cmd("stopinsert")
-	-- Then write and quit
-	vim.cmd("Gwrite")
-	vim.cmd("G commit")
-end, { noremap = true, silent = true })
-
--- shortcut for Gwrite and G commit and push
-vim.keymap.set("n", "gco", function()
-	-- Exit insert mode first
-	vim.cmd("stopinsert")
-	-- Then write and quit
-	vim.cmd("Gwrite")
-	vim.cmd("G commit")
-end, { noremap = true, silent = true })
-
 -- Remove existing mapping for redo
 vim.keymap.set("n", "<C-r>", "<Nop>", { noremap = true, silent = true })
 -- Map Shift+U to redo
 vim.keymap.set("n", "U", ":redo<CR>", { noremap = true, silent = true })
 
--- shortcut for write, quit and git push
-vim.keymap.set("i", "wq", function()
-	-- Exit insert mode first
-	vim.cmd("stopinsert")
-	-- Then write
-	vim.cmd("wq")
-	-- Then push
-	vim.cmd("G push")
-end, { noremap = true, silent = true })
+-- Map uppercase 'J' to a no-operation command
+vim.keymap.set("n", "J", "<Nop>", { noremap = true })
 
-vim.keymap.set("i", "gaa", function()
-	vim.cmd("stopinsert")
-	vim.cmd("Gwrite")
-end, { noremap = true, silent = true })
-
-vim.keymap.set("n", "gaa", function()
-	vim.cmd("stopinsert")
-	vim.cmd("Gwrite")
-end, { noremap = true, silent = true })
+vim.keymap.set("n", "lg", ":LazyGit<CR>", { noremap = true, silent = true })
