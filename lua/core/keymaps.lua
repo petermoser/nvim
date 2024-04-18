@@ -38,9 +38,6 @@ vim.keymap.set("n", "<C-r>", "<Nop>", { noremap = true, silent = true })
 -- Map Shift+U to redo
 vim.keymap.set("n", "U", ":redo<CR>", { noremap = true, silent = true })
 
--- Map uppercase 'J' to a no-operation command
-vim.keymap.set("n", "J", "<Nop>", { noremap = true })
-
 vim.keymap.set("n", "lg", ":LazyGit<CR>", { noremap = true, silent = true })
 
 local chatgpt = require("chatgpt")
