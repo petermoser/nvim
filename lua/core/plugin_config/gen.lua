@@ -1,9 +1,9 @@
 -- remember to start the LLM with for example:
 -- ollama run mistral:instruct
 
-vim.keymap.set("v", "<leader>g", ":Gen<CR>")
-vim.keymap.set("n", "<leader>g", ":Gen<CR>")
-
+-- vim.keymap.set("v", "<leader>g", ":Gen<CR>")
+-- vim.keymap.set("n", "<leader>g", ":Gen<CR>")
+--
 require("gen").model = "mistral:instruct"
 
 require("gen").prompts["Explain Code"] = {
