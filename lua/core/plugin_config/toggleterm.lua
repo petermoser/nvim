@@ -53,7 +53,4 @@ local function run_last_command_in_terminal()
 	end
 end
 
--- to open another terminial window use space t
-vim.keymap.set("n", "<leader>t", "<cmd>2ToggleTerm<CR>", { noremap = true, silent = true })
-
 vim.keymap.set("n", "<C-r>", "", { callback = run_last_command_in_terminal, noremap = true })

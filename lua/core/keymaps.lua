@@ -3,6 +3,11 @@ vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+
+-- set the leader key to space
+vim.api.nvim_set_keymap("n", "<Space>", "<Nop>", { noremap = true, silent = true })
+vim.g.mapleader = " "
+
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 -- insert new line with yanked content
 vim.keymap.set("n", "Q", "o<Esc>p", { noremap = true })
@@ -45,9 +50,8 @@ local wk = require("which-key")
 wk.register({
 	["<leader>"] = {
 		name = "ChatGPT",
-		g = { "<cmd>ChatGPT<CR>", "ChatGPT" },
+		c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
 		e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
-		t = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
 		o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
 		s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
 		f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
@@ -55,3 +59,7 @@ wk.register({
 		l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
 	},
 })
+-- to open another terminial window use space t
+vim.keymap.set("n", "t1", "<cmd>1ToggleTerm<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "t2", "<cmd>2ToggleTerm<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "t3", "<cmd>3ToggleTerm<CR>", { noremap = true, silent = true })
