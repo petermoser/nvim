@@ -45,21 +45,15 @@ vim.keymap.set("n", "U", ":redo<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "lg", ":LazyGit<CR>", { noremap = true, silent = true })
 
-local chatgpt = require("chatgpt")
-local wk = require("which-key")
-wk.register({
-	["<leader>"] = {
-		name = "ChatGPT",
-		c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
-		e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
-		o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
-		s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
-		f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
-		x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
-		l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
-	},
-})
 -- to open another terminial window use space t
 vim.keymap.set("n", "t1", "<cmd>1ToggleTerm<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "t2", "<cmd>2ToggleTerm<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "t3", "<cmd>3ToggleTerm<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "t4", "<cmd>4ToggleTerm<CR>", { noremap = true, silent = true })
+
+-- ChatGPT keymaps
+vim.keymap.set("v", "<leader>c", "<ESC>:ChatGPTEditWithInstruction<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>f", "<ESC>:ChatGPTRun fix_bugs<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>x", "<ESC>:ChatGPTRun explain_code<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>o", "<ESC>:ChatGPTRun optimize_code<CR>", { noremap = true, silent = true })
+
