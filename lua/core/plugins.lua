@@ -1,121 +1,156 @@
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
-end
+-- Return the list of plugins to lazy.nvim
+return {
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+		config = true,
+	},
+	-- Color schemes
+	{
+		"folke/tokyonight.nvim",
+		lazy = false, -- Load during startup
+		priority = 1000, -- Ensure it loads first
+		config = function()
+			vim.cmd([[colorscheme tokyonight]])
+		end,
+	},
 
-local packer_bootstrap = ensure_packer()
+	-- Lualine (status line)
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+		config = function()
+			require("lualine").setup()
+		end,
+	},
 
-return require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
-	-- color schemes
-	--use("ellisonleao/gruvbox.nvim")
-	--use("rebelot/kanagawa.nvim")
-	use("folke/tokyonight.nvim")
+	-- Nvim-tree (file explorer)
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("nvim-tree").setup()
+		end,
+	},
 
-	use("nvim-lualine/lualine.nvim")
-	use("nvim-tree/nvim-tree.lua")
-	use("nvim-tree/nvim-web-devicons")
-	use("nvim-treesitter/nvim-treesitter")
-	use("david-kunz/gen.nvim")
-	use("tpope/vim-fugitive")
-	use({ "nvim-telescope/telescope-ui-select.nvim" })
-	use({ "mhinz/vim-startify" })
-	-- autocompletion
-	use("hrsh7th/nvim-cmp") -- The main completion plugin
-	-- Sources for nvim-cmp
-	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
-	use("hrsh7th/cmp-buffer") -- Buffer completions
-	use("hrsh7th/cmp-path") -- Path completions
-	use("hrsh7th/cmp-cmdline") -- Cmdline completions
-	-- Snippet Engine and Snippet Source
-	use("L3MON4D3/LuaSnip") -- Snippet Engine
-	use("saadparwaiz1/cmp_luasnip") -- Snippet source for nvim-cmp
+	-- Nvim-treesitter (syntax highlighting)
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+	},
 
-	use("github/copilot.vim")
+	-- Gen.nvim (AI code generation)
+	{
+		"david-kunz/gen.nvim",
+	},
 
-	-- conform.vim for installing formatters
-	use({ "stevearc/conform.nvim" })
-	use({ "rcarriga/nvim-notify" })
+	-- Vim-fugitive (Git integration)
+	{
+		"tpope/vim-fugitive",
+	},
 
-	use({
+	-- Telescope UI Select
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+	},
+
+	-- Vim-startify (start screen)
+	{
+		"mhinz/vim-startify",
+	},
+
+	-- Autocompletion plugins
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp", -- LSP source
+			"hrsh7th/cmp-buffer", -- Buffer source
+			"hrsh7th/cmp-path", -- Path source
+			"hrsh7th/cmp-cmdline", -- Cmdline source
+			"L3MON4D3/LuaSnip", -- Snippet engine
+			"saadparwaiz1/cmp_luasnip", -- Snippet completions
+		},
+	},
+
+	-- GitHub Copilot
+	{
+		"github/copilot.vim",
+	},
+
+	-- Conform.nvim (formatters)
+	{
+		"stevearc/conform.nvim",
+	},
+
+	-- Nvim-notify (notification manager)
+	{
+		"rcarriga/nvim-notify",
+	},
+
+	-- Comment.nvim (commenting utility)
+	{
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
 		end,
-	})
+	},
 
-	use({
+	-- ToggleTerm.nvim (terminal integration)
+	{
 		"akinsho/toggleterm.nvim",
-		tag = "*",
+		version = "*",
 		config = function()
 			require("toggleterm").setup()
 		end,
-	})
+	},
 
-	use({
+	-- Telescope.nvim (fuzzy finder)
+	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-	use({
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-	})
+		version = "0.1.4",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 
-	use({
-		"kdheepak/lazygit.nvim",
-		-- optional for floating window border decoration
-		requires = {
-			"nvim-lua/plenary.nvim",
+	-- Mason and LSP configuration
+	{
+		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
 		},
+		config = function()
+			require("mason").setup()
+			require("mason-lspconfig").setup()
+			-- Optionally, configure lspconfig here or in core.plugin_config
+		end,
+	},
+
+	-- Lazygit.nvim (Git UI)
+	{
+		"kdheepak/lazygit.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			-- Set up an autocommand to map Esc within LazyGit buffers
 			vim.cmd([[
-      augroup LazyGit
-        autocmd!
-        " Map Esc to cancel force push or any prompt in LazyGit
-        autocmd FileType lazygit tnoremap <buffer> <Esc> <C-c>
-      augroup END
-    ]])
+        augroup LazyGit
+          autocmd!
+          autocmd FileType lazygit tnoremap <buffer> <Esc> <C-c>
+        augroup END
+      ]])
 		end,
-	})
+	},
 
-	use({
+	-- ChatGPT.nvim
+	{
 		"jackMort/ChatGPT.nvim",
-		config = function()
-			require("chatgpt").setup()
-		end,
-		requires = {
+		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
 			"folke/trouble.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
-	})
-
-	use({
-		"folke/which-key.nvim",
 		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-			require("which-key").setup({
-				debug = true,
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
+			require("chatgpt").setup()
 		end,
-	})
-
-	if packer_bootstrap then
-		require("packer").sync()
-	end
-end)
-
+	},
+}
