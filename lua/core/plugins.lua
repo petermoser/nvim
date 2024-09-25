@@ -75,6 +75,16 @@ return require("packer").startup(function(use)
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
+		config = function()
+			-- Set up an autocommand to map Esc within LazyGit buffers
+			vim.cmd([[
+      augroup LazyGit
+        autocmd!
+        " Map Esc to cancel force push or any prompt in LazyGit
+        autocmd FileType lazygit tnoremap <buffer> <Esc> <C-c>
+      augroup END
+    ]])
+		end,
 	})
 
 	use({
@@ -108,3 +118,4 @@ return require("packer").startup(function(use)
 		require("packer").sync()
 	end
 end)
+

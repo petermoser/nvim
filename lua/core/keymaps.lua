@@ -51,9 +51,11 @@ vim.keymap.set("n", "t2", "<cmd>2ToggleTerm<CR>", { noremap = true, silent = tru
 vim.keymap.set("n", "t3", "<cmd>3ToggleTerm<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "t4", "<cmd>4ToggleTerm<CR>", { noremap = true, silent = true })
 
+-- gen plugin
+vim.keymap.set("v", "<leader>g", ":Gen<CR>")
+vim.keymap.set("n", "<leader>g", ":Gen<CR>")
 -- ChatGPT keymaps
 vim.keymap.set("v", "<leader>c", "<ESC>:ChatGPTEditWithInstruction<CR>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>f", "<ESC>:ChatGPTRun fix_bugs<CR>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>x", "<ESC>:ChatGPTRun explain_code<CR>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>o", "<ESC>:ChatGPTRun optimize_code<CR>", { noremap = true, silent = true })
-
