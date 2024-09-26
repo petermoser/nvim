@@ -213,8 +213,12 @@ local plugins = {
 				ft = { "markdown", "Avante" },
 			},
 		},
+		-- config = function()
+		--     require("avante_lib").load()
+		-- end,
 	},
 }
 local opts = {}
+
 -- Load plugins using lazy.nvim
 require("lazy").setup(plugins, opts)
