@@ -85,6 +85,47 @@ lspconfig.lua_ls.setup({
 	},
 })
 
+-- Configure the 'yamlls' server
+lspconfig.yamlls.setup({
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] = "*.yml",
+      },
+      customTags = {
+        "!And",
+        "!And sequence",
+        "!If",
+        "!If sequence",
+        "!Not",
+        "!Not sequence",
+        "!Equals",
+        "!Equals sequence",
+        "!Or",
+        "!Or sequence",
+        "!FindInMap",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Cidr",
+        "!Ref",
+        "!Ref scalar",
+        "!Sub",
+        "!Sub sequence",
+        "!GetAtt",
+        "!GetAtt sequence",
+        "!GetAZs",
+        "!ImportValue",
+        "!ImportValue sequence",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Split sequence",
+        "!Join",
+        "!Join sequence",
+      },
+    },
+  },
+})
 -- Optional: Configure diagnostic signs
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
