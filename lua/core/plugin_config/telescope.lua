@@ -4,8 +4,13 @@ vim.keymap.set("n", "<c-p>", builtin.find_files, {})
 -- show the file history
 vim.keymap.set("n", "fh", builtin.oldfiles, {})
 vim.keymap.set("n", "<C-u>", builtin.grep_string, {})
-vim.keymap.set("n", "<C-f>", builtin.live_grep, {})
-vim.keymap.set("n", "<Space>fh", builtin.help_tags, {})
+vim.keymap.set("n", "<C-w>", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
+vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Find Old Files" })
+vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "Search Git Commits" })
+vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, { desc = "Search Git Commits for Buffer" })
+vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
+
 -- vim.keymap.set('n', '<C-g>', builtin.git_files, {})
 
 require("telescope").setup({
