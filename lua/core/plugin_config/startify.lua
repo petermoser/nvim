@@ -22,6 +22,8 @@ vim.g.startify_commands = {
 vim.g.startify_bookmarks = {
 	{ c = "~/.config/nvim/init.lua" },
 	{ z = "~/.zshrc" },
+	{ s = "~/.ssh/config" },
+	{ h = "~/.ssh/known_hosts" },
 }
 
 -- Auto commands using Lua in Neovim
