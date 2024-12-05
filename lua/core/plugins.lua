@@ -217,6 +217,28 @@ local plugins = {
 		--     require("avante_lib").load()
 		-- end,
 	},
+	{
+		"nvim-neorg/neorg",
+		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+		version = "*", -- Pin Neorg to the latest stable release
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {}, -- Loads default behaviour
+					["core.concealer"] = {}, -- Adds pretty icons to your documents
+					["core.dirman"] = { -- Manages Neorg workspaces
+						config = {
+							workspaces = {
+								coverstar = "~/Projects/neorg/norae",
+							},
+							default_workspace = "coverstar",
+						},
+					},
+				},
+			})
+		end,
+	},
 }
 local opts = {}
 
