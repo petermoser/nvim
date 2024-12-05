@@ -7,6 +7,7 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 -- set the leader key to space
 vim.api.nvim_set_keymap("n", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 -- insert new line with yanked content
@@ -64,6 +65,10 @@ vim.keymap.set("n", "fg", builtin.git_bcommits, { desc = "Search Git Commits for
 -- vim.keymap.set("n", "fg", builtin.git_commits, { desc = "Search Git Commits" })
 -- vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
 -- vim.keymap.set('n', '<C-g>', builtin.git_files, {})
+
+-- neorg keymaps
+vim.keymap.set("n", "<Leader>n", ":Neorg<CR>", {})
+vim.keymap.set("n", "<Leader>nn", "<Plug>(neorg.dirman.new-note)", {})
 
 -- gen plugin
 -- vim.keymap.set("v", "<leader>g", ":Gen<CR>")

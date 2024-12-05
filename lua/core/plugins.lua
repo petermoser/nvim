@@ -230,9 +230,12 @@ local plugins = {
 					["core.dirman"] = { -- Manages Neorg workspaces
 						config = {
 							workspaces = {
+								default = "~/Projects/neorg",
 								coverstar = "~/Projects/neorg/norae",
+								mindly = "~/Projects/neorg/mindly",
+								ml = "~/Projects/neorg/ml",
 							},
-							default_workspace = "coverstar",
+							default_workspace = "default",
 						},
 					},
 				},
