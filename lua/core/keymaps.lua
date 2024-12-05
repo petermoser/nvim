@@ -51,11 +51,25 @@ vim.keymap.set("n", "t2", "<cmd>2ToggleTerm<CR>", { noremap = true, silent = tru
 vim.keymap.set("n", "t3", "<cmd>3ToggleTerm<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "t4", "<cmd>4ToggleTerm<CR>", { noremap = true, silent = true })
 
+-- telescope keymaps
+local builtin = require("telescope.builtin")
+
+vim.keymap.set("n", "<c-p>", builtin.find_files, {})
+-- show the file history
+vim.keymap.set("n", "fo", builtin.oldfiles, {}) -- show the old file history
+vim.keymap.set("n", "fb", builtin.buffers, { desc = "Find Buffers" }) -- show the vim buffers
+vim.keymap.set("n", "ff", builtin.grep_string, {}) -- search for a the exact string under the cursor
+vim.keymap.set("n", "fw", builtin.live_grep, {}) -- type and search results in real time
+vim.keymap.set("n", "fg", builtin.git_bcommits, { desc = "Search Git Commits for Buffer" })
+-- vim.keymap.set("n", "fg", builtin.git_commits, { desc = "Search Git Commits" })
+-- vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
+-- vim.keymap.set('n', '<C-g>', builtin.git_files, {})
+
 -- gen plugin
-vim.keymap.set("v", "<leader>g", ":Gen<CR>")
-vim.keymap.set("n", "<leader>g", ":Gen<CR>")
+-- vim.keymap.set("v", "<leader>g", ":Gen<CR>")
+-- vim.keymap.set("n", "<leader>g", ":Gen<CR>")
 -- ChatGPT keymaps
-vim.keymap.set("v", "<leader>c", "<ESC>:ChatGPTEditWithInstruction<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<leader>f", "<ESC>:ChatGPTRun fix_bugs<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<leader>x", "<ESC>:ChatGPTRun explain_code<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<leader>o", "<ESC>:ChatGPTRun optimize_code<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<leader>c", "<ESC>:ChatGPTEditWithInstruction<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<leader>f", "<ESC>:ChatGPTRun fix_bugs<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<leader>x", "<ESC>:ChatGPTRun explain_code<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<leader>o", "<ESC>:ChatGPTRun optimize_code<CR>", { noremap = true, silent = true })

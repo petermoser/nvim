@@ -21,6 +21,7 @@ vim.g.startify_commands = {
 -- Define startify bookmarks
 vim.g.startify_bookmarks = {
 	{ c = "~/.config/nvim/init.lua" },
+	{ k = "~/.config/nvim/lua/core/keymaps.lua" },
 	{ z = "~/.zshrc" },
 	{ s = "~/.ssh/config" },
 	{ h = "~/.ssh/known_hosts" },
