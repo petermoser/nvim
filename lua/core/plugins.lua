@@ -155,19 +155,19 @@ local plugins = {
 	},
 
 	-- ChatGPT.nvim
-	{
-		"jackMort/ChatGPT.nvim",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"folke/trouble.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		config = function()
-			require("chatgpt").setup()
-		end,
-	},
-
+	-- {
+	-- 	"jackMort/ChatGPT.nvim",
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"folke/trouble.nvim",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		require("chatgpt").setup()
+	-- 	end,
+	-- },
+	--
 	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
