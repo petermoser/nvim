@@ -153,6 +153,22 @@ local plugins = {
       ]])
 		end,
 	},
+	{
+		"tpope/vim-dadbod",
+		lazy = true, -- Load lazily
+	},
+	{
+		"kristijanhusak/vim-dadbod-ui",
+		dependencies = { "tpope/vim-dadbod" }, -- UI depends on vim-dadbod
+		cmd = { "DBUI", "DBUIToggle", "DBUIFindBuffer", "DBUIRenameBuffer" }, -- Lazy load on these commands
+		config = function()
+			vim.g.db_ui_use_nerd_fonts = 1 -- Optional: Enables Nerd Fonts for better visuals
+		end,
+	},
+	{
+		"kristijanhusak/vim-dadbod-completion",
+		dependencies = { "tpope/vim-dadbod" }, -- Autocompletion depends on vim-dadbod
+	},
 
 	-- ChatGPT.nvim
 	-- {

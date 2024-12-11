@@ -13,6 +13,7 @@ require("core.plugin_config.startify")
 require("core.plugin_config.conform")
 require("core.plugin_config.cmp")
 require("core.plugin_config.copilot")
+require("core.plugin_config.dadbod")
 
 -- auto open the following plugins
 
