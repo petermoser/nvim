@@ -70,6 +70,12 @@ vim.keymap.set("n", "fg", builtin.git_bcommits, { desc = "Search Git Commits for
 vim.keymap.set("n", "<Leader>n", ":Neorg<CR>", {})
 vim.keymap.set("n", "<Leader>nn", "<Plug>(neorg.dirman.new-note)", {})
 
+-- avante keymaps
+vim.keymap.set("n", "<Leader>aa", ":AvanteAsk<CR>", {})
+vim.keymap.set("n", "<Leader>ac", ":AvanteChat<CR>", {})
+vim.keymap.set("n", "<Leader>ae", ":AvanteEdit<CR>", {})
+vim.keymap.set("n", "<Leader>at", ":AvanteToggle<CR>", {})
+
 -- gen plugin
 -- vim.keymap.set("v", "<leader>g", ":Gen<CR>")
 -- vim.keymap.set("n", "<leader>g", ":Gen<CR>")
