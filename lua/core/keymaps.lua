@@ -76,6 +76,10 @@ vim.keymap.set("n", "<Leader>ac", ":AvanteChat<CR>", {})
 vim.keymap.set("n", "<Leader>ae", ":AvanteEdit<CR>", {})
 vim.keymap.set("n", "<Leader>at", ":AvanteToggle<CR>", {})
 
+-- dadbod keymaps
+vim.keymap.set("n", "<Leader>db", ":DBUIToggle<CR>", {})
+vim.keymap.set("n", "<Leader>ds", "<Plug>(DBUI_SaveQuery)", {})
+
 -- gen plugin
 -- vim.keymap.set("v", "<leader>g", ":Gen<CR>")
 -- vim.keymap.set("n", "<leader>g", ":Gen<CR>")
