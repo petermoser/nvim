@@ -20,7 +20,9 @@ require("toggleterm").setup({
 	},
 })
 
-local function run_last_command_in_terminal()
+local M = {}
+
+M.run_last_command_in_terminal = function()
 	-- Get the list of all open buffers
 	local bufs = vim.api.nvim_list_bufs()
 	local toggleterm_buf = nil
@@ -52,5 +54,12 @@ local function run_last_command_in_terminal()
 		print("ToggleTerm is not open.")
 	end
 end
+-- Creaje a user command for easier access
+vim.api.nvim_create_user_command("TerminalRerun", M.run_last_command_in_terminal, {})
 
-vim.keymap.set("n", "<C-r>", "", { callback = run_last_command_in_terminal, noremap = true })
+-- Remove existing mapping for redo
+vim.keymap.set("n", "<C-r>", "<Nop>", { noremap = true, silent = true })
+-- Key mapping
+vim.keymap.set("n", "<C-r>", M.run_last_command_in_terminal, { noremap = true, silent = true })
+
+return M

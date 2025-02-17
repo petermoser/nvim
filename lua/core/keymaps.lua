@@ -39,8 +39,6 @@ vim.keymap.set("n", "J", "<Nop>", { noremap = true })
 -- Remap Shift + J to the original line concatenation action
 vim.keymap.set("n", "<S-j>", "J", { noremap = true })
 
--- Remove existing mapping for redo
-vim.keymap.set("n", "<C-r>", "<Nop>", { noremap = true, silent = true })
 -- Map Shift+U to redo
 vim.keymap.set("n", "U", ":redo<CR>", { noremap = true, silent = true })
 
