@@ -30,3 +30,11 @@ vim.wo.number = true
 
 -- split windows to the right and below
 vim.o.splitright = true
+
+-- conceallevel is for obsidian.nvim to have embedding notes preview and hidden link brakets
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.opt_local.conceallevel = 2
+	end,
+})

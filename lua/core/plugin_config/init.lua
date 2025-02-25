@@ -14,6 +14,7 @@ require("core.plugin_config.conform")
 require("core.plugin_config.cmp")
 require("core.plugin_config.copilot")
 require("core.plugin_config.dadbod")
+require("core.plugin_config.avante")
 
 -- auto open the following plugins
 
