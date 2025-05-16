@@ -15,13 +15,25 @@ require("mason-lspconfig").setup({
 		"tailwindcss",
 		"yamlls",
 	},
+	automatic_enable = true,
+})
+
+-- Configure diagnostics to show in the buffer
+vim.diagnostic.config({
+	virtual_text = true, -- Show diagnostics as virtual text
+	signs = true, -- Show signs in the sign column
+	underline = true, -- Underline text with issues
+	update_in_insert = false, -- Don't update diagnostics in insert mode
+	severity_sort = true, -- Sort diagnostics by severity
+	float = {
+		border = "rounded", -- Add border to floating windows
+		header = "", -- No header in floating windows
+		prefix = "", -- No prefix in floating windows
+	},
 })
 
 -- Import lspconfig
 local lspconfig = require("lspconfig")
-
--- Set default options for LSP servers
-local lsp_defaults = lspconfig.util.default_config
 
 -- Define a function to attach completion and keymaps
 local on_attach = function(client, bufnr)
@@ -39,8 +51,6 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 	vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 	vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 end
@@ -67,9 +77,8 @@ for _, server in ipairs(servers) do
 end
 
 -- Special configuration for lua_ls
-lspconfig.lua_ls.setup({
-	on_attach = on_attach,
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+vim.lsp.config("lua_ls", {
+	-- Server-specific settings. See `:help lsp-quickstart`
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -86,45 +95,45 @@ lspconfig.lua_ls.setup({
 })
 
 -- Configure the 'yamlls' server
-lspconfig.yamlls.setup({
-  settings = {
-    yaml = {
-      schemas = {
-        ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] = "*.yml",
-      },
-      customTags = {
-        "!And",
-        "!And sequence",
-        "!If",
-        "!If sequence",
-        "!Not",
-        "!Not sequence",
-        "!Equals",
-        "!Equals sequence",
-        "!Or",
-        "!Or sequence",
-        "!FindInMap",
-        "!FindInMap sequence",
-        "!Base64",
-        "!Cidr",
-        "!Ref",
-        "!Ref scalar",
-        "!Sub",
-        "!Sub sequence",
-        "!GetAtt",
-        "!GetAtt sequence",
-        "!GetAZs",
-        "!ImportValue",
-        "!ImportValue sequence",
-        "!Select",
-        "!Select sequence",
-        "!Split",
-        "!Split sequence",
-        "!Join",
-        "!Join sequence",
-      },
-    },
-  },
+vim.lsp.config("yamlls", {
+	settings = {
+		yaml = {
+			schemas = {
+				["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] = "*.yml",
+			},
+			customTags = {
+				"!And",
+				"!And sequence",
+				"!If",
+				"!If sequence",
+				"!Not",
+				"!Not sequence",
+				"!Equals",
+				"!Equals sequence",
+				"!Or",
+				"!Or sequence",
+				"!FindInMap",
+				"!FindInMap sequence",
+				"!Base64",
+				"!Cidr",
+				"!Ref",
+				"!Ref scalar",
+				"!Sub",
+				"!Sub sequence",
+				"!GetAtt",
+				"!GetAtt sequence",
+				"!GetAZs",
+				"!ImportValue",
+				"!ImportValue sequence",
+				"!Select",
+				"!Select sequence",
+				"!Split",
+				"!Split sequence",
+				"!Join",
+				"!Join sequence",
+			},
+		},
+	},
 })
 -- Optional: Configure diagnostic signs
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
