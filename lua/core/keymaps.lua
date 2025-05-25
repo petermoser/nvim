@@ -9,6 +9,10 @@ vim.api.nvim_set_keymap("n", "<Space>", "<Nop>", { noremap = true, silent = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
+-- Make the window wider
+vim.keymap.set("n", "<leader>k", ":res +10<CR>")
+vim.keymap.set("n", "<leader>j", ":res -10<CR>")
+
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 -- insert new line with yanked content
 vim.keymap.set("n", "Q", "o<Esc>p", { noremap = true })
