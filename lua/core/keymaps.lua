@@ -10,8 +10,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 -- Make the window wider
-vim.keymap.set("n", "<leader>k", ":res +10<CR>")
-vim.keymap.set("n", "<leader>j", ":res -10<CR>")
+vim.keymap.set("n", "<leader>k", ":res +15<CR>")
+vim.keymap.set("n", "<leader>j", ":res -15<CR>")
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 -- insert new line with yanked content
