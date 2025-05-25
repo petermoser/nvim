@@ -10,8 +10,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 -- Make the window wider
-vim.keymap.set("n", "<leader>k", ":res +15<CR>")
-vim.keymap.set("n", "<leader>j", ":res -15<CR>")
+vim.keymap.set("n", "<leader>k", ":res +10<CR>")
+vim.keymap.set("n", "<leader>j", ":res -10<CR>")
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 -- insert new line with yanked content
@@ -20,6 +20,8 @@ vim.keymap.set("n", "Q", "o<Esc>p", { noremap = true })
 vim.api.nvim_set_keymap("v", "cp", '"+y', { noremap = true, silent = true })
 
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
+-- Ensure Ctrl-[ works as escape globally
+vim.keymap.set("i", "<C-[>", "<Esc>", { noremap = true, silent = true })
 -- For insert mode, we create an anonymous function to save and exit insert mode
 vim.keymap.set("i", "fd", function()
 	vim.cmd("stopinsert")
@@ -77,6 +79,9 @@ vim.keymap.set("n", "<Leader>aa", ":AvanteAsk<CR>", {})
 vim.keymap.set("n", "<Leader>ac", ":AvanteChat<CR>", {})
 vim.keymap.set("n", "<Leader>ae", ":AvanteEdit<CR>", {})
 vim.keymap.set("n", "<Leader>at", ":AvanteToggle<CR>", {})
+
+-- claude code keymaps
+vim.keymap.set("n", "<Leader>cc", ":ClaudeCode<CR>", { noremap = true, silent = true })
 
 -- dadbod keymaps
 vim.keymap.set("n", "<Leader>db", ":DBUIToggle<CR>", {})

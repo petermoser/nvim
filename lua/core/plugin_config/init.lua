@@ -15,6 +15,7 @@ require("core.plugin_config.cmp")
 require("core.plugin_config.copilot")
 require("core.plugin_config.dadbod")
 require("core.plugin_config.avante")
+require("core.plugin_config.claude-code")
 
 -- auto open the following plugins
 

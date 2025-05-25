@@ -183,11 +183,13 @@ local function setup_buffer_keymaps()
 				keymap("n", key, "<cmd>close<cr>", { buffer = buf, desc = desc })
 			end
 
-			-- Explicitly remap Escape to do nothing in normal mode
+			-- Explicitly remap Escape to do nothing in normal mode, but preserve Ctrl-[
 			keymap("n", "<Esc>", "<Nop>", { buffer = buf, desc = "Prevent closing with Escape" })
+			keymap("n", "<C-[>", "<Esc>", { buffer = buf, desc = "Allow Ctrl-[ to work as escape" })
 
 			-- In insert mode, Escape should still exit to normal mode
 			keymap("i", "<Esc>", "<Esc>", { buffer = buf, desc = "Exit to normal mode" })
+			keymap("i", "<C-[>", "<Esc>", { buffer = buf, desc = "Allow Ctrl-[ to work as escape" })
 		end,
 	})
 end
