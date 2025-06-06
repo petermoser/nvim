@@ -6,8 +6,8 @@ local M = {}
 local CONFIG = {
 	-- Provider settings
 	PROVIDER = "claude",
---	MODEL = "claude-3-7-sonnet-20250219",
-		MODEL = "claude-sonnet-4-20250514",
+	--	MODEL = "claude-3-7-sonnet-20250219",
+	MODEL = "claude-sonnet-4-20250514",
 	TEMPERATURE = 0,
 	MAX_TOKENS = 20480,
 	TOP_P = 0.95,
@@ -61,12 +61,16 @@ local function get_provider_config()
 	return {
 		provider = CONFIG.PROVIDER,
 		auto_suggestions = false,
-		claude = {
-			endpoint = "https://api.anthropic.com",
-			model = CONFIG.MODEL,
-			temperature = CONFIG.TEMPERATURE,
-			max_tokens = CONFIG.MAX_TOKENS,
-			top_p = CONFIG.TOP_P,
+		providers = {
+			claude = {
+				endpoint = "https://api.anthropic.com",
+				model = CONFIG.MODEL,
+				extra_request_body = {
+					temperature = CONFIG.TEMPERATURE,
+					max_tokens = CONFIG.MAX_TOKENS,
+					top_p = CONFIG.TOP_P,
+				},
+			},
 		},
 	}
 end

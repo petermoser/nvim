@@ -210,7 +210,7 @@ local plugins = {
 	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
-		version = "v0.0.23",
+		version = "v0.0.24",
 		build = "make",
 		config = function()
 			require("core.plugin_config.avante").setup()
