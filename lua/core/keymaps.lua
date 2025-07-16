@@ -76,11 +76,18 @@ vim.keymap.set("n", "fg", builtin.git_bcommits, { desc = "Search Git Commits for
 vim.keymap.set("n", "<Leader>n", ":Neorg<CR>", {})
 vim.keymap.set("n", "<Leader>nn", "<Plug>(neorg.dirman.new-note)", {})
 
--- avante keymaps
-vim.keymap.set("n", "<Leader>aa", ":AvanteAsk<CR>", {})
-vim.keymap.set("n", "<Leader>ac", ":AvanteChat<CR>", {})
-vim.keymap.set("n", "<Leader>ae", ":AvanteEdit<CR>", {})
-vim.keymap.set("n", "<Leader>at", ":AvanteToggle<CR>", {})
+-- CodeCompaniion keymaps
+vim.keymap.set("n", "<Leader>aa", ":CodeCompanionChat<CR>", {})
+vim.keymap.set("n", "<Leader>ac", ":CodeCompanionCmd<CR>", {})
+vim.keymap.set("n", "<Leader>ae", ":CodeCompanionChat<CR>", {})
+vim.keymap.set("n", "<Leader>at", ":CodeCompanionActions<CR>", {})
+vim.keymap.set({ "n", "v" }, "<Leader>ah", ":CodeCompanionHistory<CR>", {})
+
+-- Avante keymaps (commented out)
+-- vim.keymap.set("n", "<Leader>aa", ":AvanteAsk<CR>", {})
+-- vim.keymap.set("n", "<Leader>ac", ":AvanteChat<CR>", {})
+-- vim.keymap.set("n", "<Leader>ae", ":AvanteEdit<CR>", {})
+-- vim.keymap.set("n", "<Leader>at", ":AvanteToggle<CR>", {})
 
 -- claude code keymaps
 vim.keymap.set("n", "<Leader>cc", ":ClaudeCode<CR>", { noremap = true, silent = true })

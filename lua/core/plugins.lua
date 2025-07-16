@@ -207,46 +207,57 @@ local plugins = {
 			require("mcphub").setup()
 		end,
 	},
+	-- {
+	-- 	"yetone/avante.nvim",
+	-- 	event = "VeryLazy",
+	-- 	version = "v0.0.24",
+	-- 	build = "make",
+	-- 	config = function()
+	-- 		require("core.plugin_config.avante").setup()
+	-- 	end,
+	-- 	dependencies = {
+	-- 		-- Core dependencies
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"stevearc/dressing.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"MunifTanjim/nui.nvim",
+	--
+	-- 		-- File selector and completion
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 		"hrsh7th/nvim-cmp",
+	-- 		"nvim-tree/nvim-web-devicons",
+	--
+	-- 		-- Image support
+	-- 		{
+	-- 			"HakonHarnes/img-clip.nvim",
+	-- 			event = "VeryLazy",
+	-- 			opts = {
+	-- 				default = {
+	-- 					embed_image_as_base64 = false,
+	-- 					prompt_for_file_name = false,
+	-- 					drag_and_drop = { insert_mode = true },
+	-- 					use_absolute_path = true,
+	-- 				},
+	-- 			},
+	-- 		},
+	--
+	-- 		-- Markdown rendering
+	-- 		{
+	-- 			"MeanderingProgrammer/render-markdown.nvim",
+	-- 			opts = { file_types = { "markdown", "Avante" } },
+	-- 			ft = { "markdown", "Avante" },
+	-- 		},
+	-- 	},
+	-- },
 	{
-		"yetone/avante.nvim",
-		event = "VeryLazy",
-		version = "v0.0.24",
-		build = "make",
-		config = function()
-			require("core.plugin_config.avante").setup()
-		end,
+		"olimorris/codecompanion.nvim",
 		dependencies = {
-			-- Core dependencies
-			"nvim-treesitter/nvim-treesitter",
-			"stevearc/dressing.nvim",
 			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-
-			-- File selector and completion
-			"nvim-telescope/telescope.nvim",
-			"hrsh7th/nvim-cmp",
-			"nvim-tree/nvim-web-devicons",
-
-			-- Image support
-			{
-				"HakonHarnes/img-clip.nvim",
-				event = "VeryLazy",
-				opts = {
-					default = {
-						embed_image_as_base64 = false,
-						prompt_for_file_name = false,
-						drag_and_drop = { insert_mode = true },
-						use_absolute_path = true,
-					},
-				},
-			},
-
-			-- Markdown rendering
-			{
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = { file_types = { "markdown", "Avante" } },
-				ft = { "markdown", "Avante" },
-			},
+			"nvim-treesitter/nvim-treesitter",
+			"hrsh7th/nvim-cmp", -- Optional: for using slash commands and variables in the chat buffer
+			"nvim-telescope/telescope.nvim", -- Optional: for using slash commands
+			"ravitemer/codecompanion-history.nvim",
+			{ "stevearc/dressing.nvim", opts = {} }, -- Optional: for prettier inputs
 		},
 	},
 	{
