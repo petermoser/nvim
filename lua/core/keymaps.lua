@@ -32,7 +32,7 @@ end, { expr = true, noremap = true, silent = true })
 vim.keymap.set("n", "fd", ":write<CR>", { noremap = true, silent = true })
 
 -- This maps the Escape key to switch to Normal mode when you're in a terminal buffer.
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+-- vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 -- Map Ctrl-[ to escape from terminal insert mode
 vim.keymap.set("t", "<C-[>", [[<C-\><C-n>]], { noremap = true })
 -- two consecutive spacebar presses result in one space
@@ -64,10 +64,11 @@ local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<c-p>", builtin.find_files, {})
 -- show the file history
 vim.keymap.set("n", "fo", builtin.oldfiles, {}) -- show the old file history
-vim.keymap.set("n", "fb", builtin.buffers, { desc = "Find Buffers" }) -- show the vim buffers
+vim.keymap.set("n", "fb", "<cmd>Telescope buffers<cr>", { desc = "Find Buffers" }) -- show the vim buffers
 vim.keymap.set("n", "ff", builtin.grep_string, {}) -- search for a the exact string under the cursor
 vim.keymap.set("n", "fw", builtin.live_grep, {}) -- type and search results in real time
 vim.keymap.set("n", "fg", builtin.git_bcommits, { desc = "Search Git Commits for Buffer" })
+vim.keymap.set("n", "fr", builtin.resume, { desc = "Find Resume Search" })
 -- vim.keymap.set("n", "fg", builtin.git_commits, { desc = "Search Git Commits" })
 -- vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
 -- vim.keymap.set('n', '<C-g>', builtin.git_files, {})
@@ -88,9 +89,10 @@ vim.keymap.set({ "n", "v" }, "<Leader>ah", ":CodeCompanionHistory<CR>", {})
 -- vim.keymap.set("n", "<Leader>ac", ":AvanteChat<CR>", {})
 -- vim.keymap.set("n", "<Leader>ae", ":AvanteEdit<CR>", {})
 -- vim.keymap.set("n", "<Leader>at", ":AvanteToggle<CR>", {})
-
 -- claude code keymaps
 vim.keymap.set("n", "<Leader>cc", ":ClaudeCode<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>cf", ":ClaudeCodeFocus<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<Leader>cs", ":ClaudeCodeSend<CR>", { noremap = true, silent = true })
 
 -- dadbod keymaps
 vim.keymap.set("n", "<Leader>db", ":DBUIToggle<CR>", {})

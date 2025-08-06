@@ -14,7 +14,7 @@ require("core.plugin_config.conform")
 require("core.plugin_config.cmp")
 require("core.plugin_config.copilot")
 require("core.plugin_config.dadbod")
-require("core.plugin_config.claude-code")
+require("core.plugin_config.claudecode")
 -- require("core.plugin_config.avante")
 require("core.plugin_config.code-companion")
 
