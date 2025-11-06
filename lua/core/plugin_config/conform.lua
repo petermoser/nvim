@@ -5,7 +5,8 @@ conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
-		python = { "isort", "black" },
+		-- Using ruff for both import sorting and formatting (replaces isort + black)
+		python = { "ruff_organize_imports", "ruff_format" },
 		-- Use a sub-list to run only the first available formatter
 		--    javascript = { { "prettierd", "prettier" } },
 		javascript = { "prettier" },

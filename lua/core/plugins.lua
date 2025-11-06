@@ -24,27 +24,21 @@ local plugins = {
 		"folke/tokyonight.nvim",
 		lazy = false, -- Load during startup
 		priority = 1000, -- Ensure it loads first
-		config = function()
-			vim.cmd([[colorscheme tokyonight]])
-		end,
+		options = {
+			transparent = true,
+		},
 	},
 
 	-- Lualine (status line)
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
-		config = function()
-			require("lualine").setup()
-		end,
 	},
 
 	-- Nvim-tree (file explorer)
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("nvim-tree").setup()
-		end,
 	},
 
 	-- Nvim-treesitter (syntax highlighting)
@@ -81,8 +75,6 @@ local plugins = {
 			"hrsh7th/cmp-buffer", -- Buffer source
 			"hrsh7th/cmp-path", -- Path source
 			"hrsh7th/cmp-cmdline", -- Cmdline source
-			"L3MON4D3/LuaSnip", -- Snippet engine
-			"saadparwaiz1/cmp_luasnip", -- Snippet completions
 		},
 	},
 
@@ -113,9 +105,6 @@ local plugins = {
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
-		config = function()
-			require("toggleterm").setup()
-		end,
 	},
 
 	-- Telescope.nvim (fuzzy finder)
@@ -187,17 +176,16 @@ local plugins = {
 	{
 		"coder/claudecode.nvim",
 		dependencies = { "folke/snacks.nvim" },
-		config = true,
 		keys = {
 			{
 				"<leader>cs",
 				"<cmd>ClaudeCodeTreeAdd<cr>",
-				desc = "Add file",
+				desc = "Add file from tree",
 				ft = { "NvimTree", "neo-tree", "oil", "minifiles" },
 			},
 			-- Diff management
-			{ "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-			{ "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+			{ "<Space><Space>", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept Claude diff" },
+			{ "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny Claude diff" },
 		},
 	},
 	{

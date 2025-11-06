@@ -12,6 +12,7 @@ require("mason-lspconfig").setup({
 		"docker_compose_language_service",
 		"dockerls",
 		"pyright",
+		"ruff_lsp", -- Python linting and formatting
 		"tailwindcss",
 		"yamlls",
 	},
@@ -31,9 +32,6 @@ vim.diagnostic.config({
 		prefix = "", -- No prefix in floating windows
 	},
 })
-
--- Import lspconfig
-local lspconfig = require("lspconfig")
 
 -- Define a function to attach completion and keymaps
 local on_attach = function(client, bufnr)
@@ -55,7 +53,10 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 end
 
--- Loop through the servers and set them up
+-- Define default capabilities
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+-- Loop through the servers and set them up using new API
 local servers = {
 	"html",
 	"cssls",
@@ -66,15 +67,30 @@ local servers = {
 	"dockerls",
 	"pyright",
 	"tailwindcss",
-	"yamlls",
 }
 
 for _, server in ipairs(servers) do
-	lspconfig[server].setup({
+	vim.lsp.config(server, {
 		on_attach = on_attach,
-		capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		capabilities = capabilities,
 	})
 end
+
+-- Configure ruff_lsp for Python linting
+vim.lsp.config("ruff_lsp", {
+	on_attach = function(client, bufnr)
+		-- Disable hover in favor of Pyright
+		client.server_capabilities.hoverProvider = false
+		on_attach(client, bufnr)
+	end,
+	capabilities = capabilities,
+	init_options = {
+		settings = {
+			-- Additional ruff settings can be added here
+			args = {},
+		},
+	},
+})
 
 -- Special configuration for lua_ls
 vim.lsp.config("lua_ls", {

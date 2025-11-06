@@ -35,8 +35,9 @@ vim.keymap.set("n", "fd", ":write<CR>", { noremap = true, silent = true })
 -- vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 -- Map Ctrl-[ to escape from terminal insert mode
 vim.keymap.set("t", "<C-[>", [[<C-\><C-n>]], { noremap = true })
--- two consecutive spacebar presses result in one space
-vim.keymap.set("n", "<Space><Space>", ':exe "normal i "<CR>', { noremap = true, silent = true })
+-- Note: <Space><Space> is now mapped to ClaudeCodeDiffAccept in plugins.lua
+-- Old mapping: two consecutive spacebar presses result in one space
+-- vim.keymap.set("n", "<Space><Space>", ':exe "normal i "<CR>', { noremap = true, silent = true })
 
 -- don't copy the replaced text after pasting in visual mode
 vim.keymap.set("v", "p", "pgvy", { noremap = true })
@@ -89,10 +90,14 @@ vim.keymap.set({ "n", "v" }, "<Leader>ah", ":CodeCompanionHistory<CR>", {})
 -- vim.keymap.set("n", "<Leader>ac", ":AvanteChat<CR>", {})
 -- vim.keymap.set("n", "<Leader>ae", ":AvanteEdit<CR>", {})
 -- vim.keymap.set("n", "<Leader>at", ":AvanteToggle<CR>", {})
--- claude code keymaps
-vim.keymap.set("n", "<Leader>cc", ":ClaudeCode<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>cf", ":ClaudeCodeFocus<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<Leader>cs", ":ClaudeCodeSend<CR>", { noremap = true, silent = true })
+
+-- Claude Code keymaps
+vim.keymap.set("n", "<Leader>cc", ":ClaudeCode<CR>", { noremap = true, silent = true, desc = "Toggle Claude Code" })
+vim.keymap.set("n", "<Leader>cf", ":ClaudeCodeFocus<CR>", { noremap = true, silent = true, desc = "Focus Claude Code" })
+vim.keymap.set("n", "<Leader>cm", ":ClaudeCodeSelectModel<CR>", { noremap = true, silent = true, desc = "Select Claude Model" })
+vim.keymap.set("v", "<Leader>cs", ":ClaudeCodeSend<CR>", { noremap = true, silent = true, desc = "Send selection to Claude" })
+vim.keymap.set("n", "<Leader>ca", ":ClaudeCodeAdd %<CR>", { noremap = true, silent = true, desc = "Add current file to Claude" })
+-- Note: <leader>cs in file tree mode and diff accept/deny are defined in plugins.lua
 
 -- dadbod keymaps
 vim.keymap.set("n", "<Leader>db", ":DBUIToggle<CR>", {})
