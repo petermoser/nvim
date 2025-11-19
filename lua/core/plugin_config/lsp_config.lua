@@ -12,7 +12,7 @@ require("mason-lspconfig").setup({
 		"docker_compose_language_service",
 		"dockerls",
 		"pyright",
-		"ruff_lsp", -- Python linting and formatting
+		"ruff", -- Python linting and formatting
 		"tailwindcss",
 		"yamlls",
 	},
@@ -76,8 +76,8 @@ for _, server in ipairs(servers) do
 	})
 end
 
--- Configure ruff_lsp for Python linting
-vim.lsp.config("ruff_lsp", {
+-- Configure ruff for Python linting
+vim.lsp.config("ruff", {
 	on_attach = function(client, bufnr)
 		-- Disable hover in favor of Pyright
 		client.server_capabilities.hoverProvider = false
