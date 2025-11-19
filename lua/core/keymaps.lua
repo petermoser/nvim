@@ -78,12 +78,20 @@ vim.keymap.set("n", "fr", builtin.resume, { desc = "Find Resume Search" })
 vim.keymap.set("n", "<Leader>n", ":Neorg<CR>", {})
 vim.keymap.set("n", "<Leader>nn", "<Plug>(neorg.dirman.new-note)", {})
 
--- CodeCompaniion keymaps
-vim.keymap.set("n", "<Leader>aa", ":CodeCompanionChat<CR>", {})
-vim.keymap.set("n", "<Leader>ac", ":CodeCompanionCmd<CR>", {})
-vim.keymap.set("n", "<Leader>ae", ":CodeCompanionChat<CR>", {})
-vim.keymap.set("n", "<Leader>at", ":CodeCompanionActions<CR>", {})
-vim.keymap.set({ "n", "v" }, "<Leader>ah", ":CodeCompanionHistory<CR>", {})
+-- CodeCompanion keymaps
+-- Chat mode (works with selection in visual mode)
+vim.keymap.set({ "n", "v" }, "<Leader>aa", ":CodeCompanionChat<CR>", { desc = "CodeCompanion Chat" })
+vim.keymap.set({ "n", "v" }, "<Leader>at", ":CodeCompanionActions<CR>", { desc = "CodeCompanion Actions" })
+
+-- Inline mode for inserting into buffer
+vim.keymap.set({ "n", "v" }, "<Leader>ai", ":CodeCompanion<CR>", { desc = "CodeCompanion Inline" })
+
+-- Toggle and other commands
+vim.keymap.set("n", "<Leader>ac", ":CodeCompanionCmd<CR>", { desc = "CodeCompanion Cmd" })
+vim.keymap.set({ "n", "v" }, "<Leader>ah", ":CodeCompanionHistory<CR>", { desc = "CodeCompanion History" })
+
+-- Quick add selection to chat
+vim.keymap.set("v", "<Leader>ae", ":CodeCompanionChat Add<CR>", { desc = "Add selection to chat" })
 
 -- Avante keymaps (commented out)
 -- vim.keymap.set("n", "<Leader>aa", ":AvanteAsk<CR>", {})
@@ -94,20 +102,27 @@ vim.keymap.set({ "n", "v" }, "<Leader>ah", ":CodeCompanionHistory<CR>", {})
 -- Claude Code keymaps
 vim.keymap.set("n", "<Leader>cc", ":ClaudeCode<CR>", { noremap = true, silent = true, desc = "Toggle Claude Code" })
 vim.keymap.set("n", "<Leader>cf", ":ClaudeCodeFocus<CR>", { noremap = true, silent = true, desc = "Focus Claude Code" })
-vim.keymap.set("n", "<Leader>cm", ":ClaudeCodeSelectModel<CR>", { noremap = true, silent = true, desc = "Select Claude Model" })
-vim.keymap.set("v", "<Leader>cs", ":ClaudeCodeSend<CR>", { noremap = true, silent = true, desc = "Send selection to Claude" })
-vim.keymap.set("n", "<Leader>ca", ":ClaudeCodeAdd %<CR>", { noremap = true, silent = true, desc = "Add current file to Claude" })
+vim.keymap.set(
+	"n",
+	"<Leader>cm",
+	":ClaudeCodeSelectModel<CR>",
+	{ noremap = true, silent = true, desc = "Select Claude Model" }
+)
+vim.keymap.set(
+	"v",
+	"<Leader>cs",
+	":'<,'>ClaudeCodeSend<CR>",
+	{ noremap = true, silent = true, desc = "Send selection to Claude" }
+)
+vim.keymap.set(
+	"n",
+	"<Leader>ca",
+	":ClaudeCodeAdd %<CR>",
+	{ noremap = true, silent = true, desc = "Add current file to Claude" }
+)
 -- Note: <leader>cs in file tree mode and diff accept/deny are defined in plugins.lua
+-- Note: Terminal buffer selections with <leader>cs are not supported due to ClaudeCode plugin limitations
 
 -- dadbod keymaps
 vim.keymap.set("n", "<Leader>db", ":DBUIToggle<CR>", {})
 vim.keymap.set("n", "<Leader>ds", "<Plug>(DBUI_SaveQuery)", {})
-
--- gen plugin
--- vim.keymap.set("v", "<leader>g", ":Gen<CR>")
--- vim.keymap.set("n", "<leader>g", ":Gen<CR>")
--- ChatGPT keymaps
--- vim.keymap.set("v", "<leader>c", "<ESC>:ChatGPTEditWithInstruction<CR>", { noremap = true, silent = true })
--- vim.keymap.set("v", "<leader>f", "<ESC>:ChatGPTRun fix_bugs<CR>", { noremap = true, silent = true })
--- vim.keymap.set("v", "<leader>x", "<ESC>:ChatGPTRun explain_code<CR>", { noremap = true, silent = true })
--- vim.keymap.set("v", "<leader>o", "<ESC>:ChatGPTRun optimize_code<CR>", { noremap = true, silent = true })
