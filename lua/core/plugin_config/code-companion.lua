@@ -3,7 +3,19 @@ require("codecompanion").setup({
 		chat = {
 			adapter = {
 				name = "anthropic",
-				model = "claude-sonnet-4-20250514",
+				model = "claude-sonnet-4-5-20250929",
+			},
+		},
+		inline = {
+			adapter = {
+				name = "anthropic",
+				model = "claude-sonnet-4-5-20250929",
+			},
+		},
+		agent = {
+			adapter = {
+				name = "anthropic",
+				model = "claude-sonnet-4-5-20250929",
 			},
 		},
 	},
@@ -14,6 +26,12 @@ require("codecompanion").setup({
 		chat = {
 			window = {
 				width = 0.33,
+			},
+		},
+		inline = {
+			-- Show diff for inline completions
+			diff = {
+				enabled = true,
 			},
 		},
 	},
