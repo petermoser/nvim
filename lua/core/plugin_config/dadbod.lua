@@ -14,3 +14,9 @@ vim.g.dbs = {
 }
 
 vim.g.db_ui_save_location = "~/Projects/norae/spotlight-backend/postgres/sql_statements/"
+
+-- Auto-execute table helpers (like Columns, Indexes) when selected
+vim.g.db_ui_auto_execute_table_helpers = 1
+
+-- Expand table info by default to show Columns, Indexes, etc.
+vim.g.db_ui_expand_table_info = 1
