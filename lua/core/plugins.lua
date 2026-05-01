@@ -14,11 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Return the list of plugins to lazy.nvim
 local plugins = {
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-		config = true,
-	},
 	-- Color schemes
 	{
 		"folke/tokyonight.nvim",
@@ -268,31 +263,6 @@ local plugins = {
 			"ravitemer/codecompanion-history.nvim",
 			{ "stevearc/dressing.nvim", opts = {} }, -- Optional: for prettier inputs
 		},
-	},
-	{
-		"nvim-neorg/neorg",
-		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-		version = "*", -- Pin Neorg to the latest stable release
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.defaults"] = {}, -- Loads default behaviour
-					["core.concealer"] = {}, -- Adds pretty icons to your documents
-					["core.dirman"] = { -- Manages Neorg workspaces
-						config = {
-							workspaces = {
-								default = "~/Projects/neorg",
-								coverstar = "~/Projects/neorg/norae",
-								mindly = "~/Projects/neorg/mindly",
-								ml = "~/Projects/neorg/ml",
-							},
-							default_workspace = "default",
-						},
-					},
-				},
-			})
-		end,
 	},
 }
 local opts = {}
