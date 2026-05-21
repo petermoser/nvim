@@ -116,10 +116,26 @@ vim.keymap.set(
 )
 vim.keymap.set(
 	"n",
-	"<Leader>ca",
+	"<Leader>cx",
 	":ClaudeCodeAdd %<CR>",
 	{ noremap = true, silent = true, desc = "Add current file to Claude" }
 )
+
+local claude_agents_term
+vim.keymap.set("n", "<Leader>ca", function()
+	if not claude_agents_term then
+		claude_agents_term = require("toggleterm.terminal").Terminal:new({
+			cmd = "claude agents",
+			direction = "vertical",
+			hidden = true,
+			close_on_exit = false,
+			on_open = function(term)
+				vim.cmd("vertical resize " .. math.floor(vim.o.columns * 0.45))
+			end,
+		})
+	end
+	claude_agents_term:toggle()
+end, { noremap = true, silent = true, desc = "Toggle Claude Agent" })
 -- Note: <leader>cs in file tree mode and diff accept/deny are defined in plugins.lua
 -- Note: Terminal buffer selections with <leader>cs are not supported due to ClaudeCode plugin limitations
 
