@@ -121,20 +121,28 @@ vim.keymap.set(
 	{ noremap = true, silent = true, desc = "Add current file to Claude" }
 )
 
-local claude_agents_term
+-- Use vim's native terminal (not toggleterm) so this doesn't interfere with
+-- <C-t>'s smart_toggle, which closes any visible toggleterm window — including
+-- "hidden" custom terminals — and would eat the horizontal split.
+local claude_agents_buf
 vim.keymap.set("n", "<Leader>ca", function()
-	if not claude_agents_term then
-		claude_agents_term = require("toggleterm.terminal").Terminal:new({
-			cmd = "claude agents",
-			direction = "vertical",
-			hidden = true,
-			close_on_exit = false,
-			on_open = function(term)
-				vim.cmd("vertical resize " .. math.floor(vim.o.columns * 0.45))
-			end,
-		})
+	local width = math.floor(vim.o.columns * 0.45)
+
+	if claude_agents_buf and vim.api.nvim_buf_is_valid(claude_agents_buf) then
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			if vim.api.nvim_win_get_buf(win) == claude_agents_buf then
+				vim.api.nvim_win_close(win, false)
+				return
+			end
+		end
+		vim.cmd("vertical rightbelow sbuffer " .. claude_agents_buf)
+		vim.cmd("vertical resize " .. width)
+	else
+		vim.cmd("vertical rightbelow new")
+		vim.cmd("vertical resize " .. width)
+		vim.fn.termopen("claude agents")
+		claude_agents_buf = vim.api.nvim_get_current_buf()
 	end
-	claude_agents_term:toggle()
 end, { noremap = true, silent = true, desc = "Toggle Claude Agent" })
 -- Note: <leader>cs in file tree mode and diff accept/deny are defined in plugins.lua
 -- Note: Terminal buffer selections with <leader>cs are not supported due to ClaudeCode plugin limitations
