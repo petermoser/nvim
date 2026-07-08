@@ -1,4 +1,11 @@
 require("claudecode").setup({
+	-- Launch Claude in auto permission mode (`--enable-auto-mode` doesn't exist;
+	-- the CLI uses `--permission-mode auto`). terminal_cmd accepts a full command
+	-- string with flags, not just a binary path.
+	-- `--settings '{"tui":"default"}'` overrides the global `"tui": "fullscreen"`
+	-- in ~/.claude/settings.json: fullscreen draws on the alternate screen, which
+	-- leaves nvim's terminal buffer without scrollback to scroll in normal mode.
+	terminal_cmd = [[claude --permission-mode auto --settings '{"tui":"default"}']],
 	terminal = {
 		split_width_percentage = 0.45,
 	},
