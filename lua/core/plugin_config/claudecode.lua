@@ -11,6 +11,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
 		if vim.bo[args.buf].buftype ~= "terminal" then
 			return
 		end
+		-- The `claude agents` terminal (<leader>ca) is meant to stay in
+		-- insert/terminal mode, so don't drop it to terminal-normal here.
+		if vim.b[args.buf].claude_agents then
+			return
+		end
 		if not vim.api.nvim_buf_get_name(args.buf):lower():find("claude") then
 			return
 		end

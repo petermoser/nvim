@@ -137,11 +137,42 @@ vim.keymap.set("n", "<Leader>ca", function()
 		end
 		vim.cmd("vertical rightbelow sbuffer " .. claude_agents_buf)
 		vim.cmd("vertical resize " .. width)
+		vim.cmd("startinsert")
 	else
 		vim.cmd("vertical rightbelow new")
 		vim.cmd("vertical resize " .. width)
 		vim.fn.termopen("claude agents")
 		claude_agents_buf = vim.api.nvim_get_current_buf()
+		-- Tag this buffer so the claudecode.lua "drop to normal mode" autocmd
+		-- skips it — the agents TUI is meant to stay in insert/terminal mode.
+		vim.b[claude_agents_buf].claude_agents = true
+
+		-- `mouse` is a global option, so scope it to this buffer with autocmds:
+		-- enable the wheel while the agents TUI is focused (it captures scroll
+		-- itself), and restore the previous value when leaving.
+		local saved_mouse
+		vim.api.nvim_create_autocmd("BufEnter", {
+			buffer = claude_agents_buf,
+			callback = function()
+				saved_mouse = vim.o.mouse
+				vim.o.mouse = "a"
+			end,
+		})
+		vim.api.nvim_create_autocmd("BufLeave", {
+			buffer = claude_agents_buf,
+			callback = function()
+				vim.o.mouse = saved_mouse or ""
+			end,
+		})
+
+		-- Start in insert/terminal mode so you can type into the agents TUI
+		-- immediately; scrolling the view is handled by the mouse wheel.
+		vim.schedule(function()
+			if vim.api.nvim_get_current_buf() == claude_agents_buf then
+				vim.o.mouse = "a"
+				vim.cmd("startinsert")
+			end
+		end)
 	end
 end, { noremap = true, silent = true, desc = "Toggle Claude Agent" })
 -- Note: <leader>cs in file tree mode and diff accept/deny are defined in plugins.lua
