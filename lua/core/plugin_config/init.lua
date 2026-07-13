@@ -38,6 +38,10 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		if has_flag("db") then
 			-- Open dadbod UI if -db flag is present
 			vim.cmd("DBUIToggle")
+		elseif has_flag("cc") then
+			-- Open Claude Code full screen if -cc flag is present
+			vim.cmd("ClaudeCode")
+			vim.cmd("wincmd o")
 		else
 			-- Open NvimTree by default
 			vim.cmd("NvimTreeOpen")
